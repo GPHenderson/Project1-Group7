@@ -1,14 +1,8 @@
 $(document).ready(function() {
 $("#currency").submit(function (e) {
-    alert("Submit button");
-    console.log("INSIDE THE SUBMIT");
+  
     e.preventDefault();
-   /* var e = document.getElementById("currenyDrop");
-    var convertCurrency = e.options[e.selectedIndex].value;
-    var text = e.options[e.selectedIndex].text;
-
-    console.log(convertCurrency);
-    console.log(text); */
+  
     var amount = $("#usDollarAmount").val();
     console.log("User Enter Amount "+amount);
     var settings = {
@@ -36,11 +30,11 @@ $("#currency").submit(function (e) {
           $("#eurAmount").val(response.rates.EUR.rate_for_amount);
           $("#eurRate").val(response.rates.EUR.rate);
     $(this).submit();
-    alert("END OF FUnction");
+    // alert("END OF FUnction");
 })
-});
+});     
 $("#exchange").submit(function(e){
-alert("Exchange");
+// alert("Exchange");
 e.preventDefault();
 var exchangeSettings = {
     "async": true,
@@ -64,11 +58,12 @@ $.ajax(exchangeSettings).done(function (response) {
     $("#week52High").val(response.quote.week52High);
     $("#week52Low").val(response.quote.week52Low);
     $("#ytdChange").val(response.quote.ytdChange);
+    $("#stockName").val(response.quote.companyName);
 });
 });
 
 $("#cryto").submit(function(e){
-    alert("Cryto");
+    // alert("Cryto");
     e.preventDefault();
     var crytoSettings = {
         "async": true,
@@ -81,7 +76,7 @@ $("#cryto").submit(function(e){
         }
     }
     $.ajax(crytoSettings).done(function (response) {
-        alert("inside ajax");
+        // alert("inside ajax");
         console.log(response);
         console.log(response.coin_name);
         console.log(response.last_price);
