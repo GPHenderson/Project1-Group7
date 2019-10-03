@@ -33,10 +33,62 @@
         <div class="panel panel-default">
             <img src="assets\images\currency-exchange-dollar-and-rupee-vector-3730203.jpg" class="card-img-top" alt="">
           <div class="panel-heading">
-            <h3 class="panel-title"><small>Cuerrency Converter:</small></h3>
+            <!-- <h3 class="panel-title"><small>Currency Converter:</small></h3> -->
           </div>
           <div class="panel-body">
-            <form role="form" id="currency">
+              <form role="form" id="currency">
+                  <h3 class="panel-title"><small>Currency Converter:</small></h3>
+                      <select id="currenyDrop">
+                          <option value="GBP">British Pound Sterling</option>
+                          <option value="EUR">European Euro</option>
+                          <option value="CAD">Canadian Dollar</option>
+                          <option value="MXN">Mexican Peso</option>
+                      </select>
+              
+              
+                  <div class="form-group">
+              
+                      <label for="text">US Dollar Amount: </label>
+              
+                      <input type="search" class="form-control" id="usDollarAmount">
+                  </div>
+              
+                  <div class="form-group">
+              
+                      <label for="text">Ending Currency: </label>
+              
+                      <h3 type="search" class="form-control" id="endingCurrency"></h3>
+                      <label for="text" id="endingCurrenctName">Euro Amount: </label>
+              
+                      <input type="search" class="form-control" id="eurAmount">
+              
+                  </div>
+              
+                  <div class="form-group">
+              
+                      <label for="text">Exchange Rate: </label>
+                      <input type="search" class="form-control" id="eurRate">
+                  </div>
+              
+              
+                  <!-- Not Sure what you are looking for here --!>
+                  <div class="form-group">
+                      <label for="text">Currency Amount:</label>
+              
+                      <label for="text">Exchange Rate </label>
+                      <input type="search" class="form-control" id="searchInput">
+                  </div>
+              
+                  <!-- <div class="form-group">
+                      <label for="text">Retail Merchandise: </label>
+                      <input type="search" class="form-control" id="searchInput">
+                  </div> -->
+                  <button type="Submit" class="btn btn-default" id="exchangeSubmit">Submit</button>
+              </form>
+
+              
+              <!-- Old Code  -->
+            <!-- <form role="form" id="currency">
 
               <div class="form-group">
           
@@ -68,7 +120,7 @@
               </div>
           
               <button type="Submit" class="btn btn-default" id="exchangeSubmit">Submit</button>
-          </form>
+          </form> -->
           
               <!-- <div class="form-group">
                   <label for="text">Retail Merchandise: </label>
