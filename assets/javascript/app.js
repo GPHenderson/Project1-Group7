@@ -1,6 +1,12 @@
 $(document).ready(function() {
-    $("#currency").submit(function (e) {
+$("#currency").submit(function (e) {
         e.preventDefault();
+        $("#beginningCurrency").val("");
+        $("#endingCurrenctName").empty();
+        $("#endingCurrenctName").prepend("");            
+        $("#endingCurrency").val("");
+        $("#eurAmount").val("");
+        $("#eurRate").val("");
         var e = document.getElementById("currenyDrop");
         var convertCurrency = e.options[e.selectedIndex].value;
         var text = e.options[e.selectedIndex].text;
@@ -20,7 +26,7 @@ $(document).ready(function() {
         }
 
         $.ajax(settings).done(function (response) {
-            console.log("Inside the Currencey");
+            console.log("Inside the Currency");
             var results = response;
             console.log(results);
             var rates = results.rates;
@@ -30,6 +36,7 @@ $(document).ready(function() {
             $("#endingCurrenctName").empty();
             $("#endingCurrenctName").prepend(getCurrencyName(rates, convertCurrency)+":");            
             $("#endingCurrency").val(getCurrencyName(rates, convertCurrency));
+            $("#usDollarAmount").val();
             $("#eurAmount").val(getAmount(rates, convertCurrency));
             $("#eurRate").val(getRate(rates, convertCurrency));
             $(this).submit();
@@ -67,11 +74,20 @@ $(document).ready(function() {
     })    
 $("#exchange").submit(function(e){
 // alert("Exchange");
+
 e.preventDefault();
+$("#latestPrice").val("");
+$("#week52High").val("");
+$("#week52Low").val("");
+$("#ytdChange").val("");
+$("#companyName").val("");
+
+var stock = $("#stockName").val();
+console.log (stock);
 var exchangeSettings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://investors-exchange-iex-trading.p.rapidapi.com/stock/intc/book",
+    "url": "https://investors-exchange-iex-trading.p.rapidapi.com/stock/"+stock+"/book",
     "method": "GET",
     "headers": {
         "x-rapidapi-host": "investors-exchange-iex-trading.p.rapidapi.com",
@@ -90,17 +106,29 @@ $.ajax(exchangeSettings).done(function (response) {
     $("#week52High").val(response.quote.week52High);
     $("#week52Low").val(response.quote.week52Low);
     $("#ytdChange").val(response.quote.ytdChange);
-    $("#stockName").val(response.quote.companyName);
+    $("#companyName").val(response.quote.companyName);
+
+})
+.fail(function(xhr, status, error){
+    $("#stockName").val("");
+    alert("Entet valid stock symbol");
 });
 });
 
 $("#cryto").submit(function(e){
     // alert("Cryto");
     e.preventDefault();
+
+    
+    var e = document.getElementById("coinDrop");
+        var crypto = e.options[e.selectedIndex].value;
+
+    console.log ("crypto");
+
     var crytoSettings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://bravenewcoin-v1.p.rapidapi.com/ticker?show=usd&coin=btc",
+        "url": "https://bravenewcoin-v1.p.rapidapi.com/ticker?show=usd&coin="+crypto,
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "bravenewcoin-v1.p.rapidapi.com",
@@ -119,5 +147,32 @@ $("#cryto").submit(function(e){
         $("#price24hr").val(response.price_24hr_pcnt);
         $("#vol24hr").val(response.vol_24hr_pcnt);
     });
-})
+});
+
+$("#cryptoReset").click(function(){
+    $("#coinName").val("");
+    $("#lastPrice").val("");
+    $("#price24hr").val("");
+    $("#vol24hr").val("");
+});
+
+
+$("#stockReset").click(function(){
+    $("#latestPrice").val("");
+$("#week52High").val("");
+$("#week52Low").val("");
+$("#ytdChange").val("");
+$("#companyName").val("");
+});
+
+$("#exchangeReset").click(function(){
+    $("#beginningCurrency").val("");
+    $("#endingCurrenctName").empty();
+    $("#endingCurrenctName").prepend("");            
+    $("#endingCurrency").val("");
+    $("#eurAmount").val("");
+    $("#eurRate").val("");
+    $("#usDollarAmount").val("");
+});
+
 })
