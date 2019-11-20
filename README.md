@@ -1,1 +1,1 @@
-# Project1-Group7
+# Financial Xchange is a finance application that has a built in currency converter, stock quotes, and bitcoin quotes. This application is designed to keep customers financially informed about 3 seperate markets, giving the consumer real-time data that they can depend on. 
